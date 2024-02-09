@@ -1,0 +1,32 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  background: transparent;
+}
+
+.notification {
+  margin: 1rem 0 1rem 1rem;
+  background-color: rgb(53, 53, 53, 0.8);
+  width: 22vh;
+  height: auto;
+  word-wrap: break-word;
+  padding: 1rem;
+  box-shadow: 11px 10px 58px -22px rgba(0, 0, 0, 0.75);
+}
+
+.notification-title p {
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+#message {
+  color: #ffffff;
+  font-size: 16px;
+}
