@@ -1,52 +1,44 @@
+# HW Scripts - MoneyLaundy (Witwas)
 
-# HW Development - Money Wash
+**Description**
 
 The HW Witwas Script provides a money laundering functionality in your FiveM server. Players can wash their dirty money into clean money through designated laundering areas. This script also includes notifications, cooldowns, and activity tracking features.
 
-## Author
+**Author**
+- HW Development | HenkW
 
-- [@HenkW00](https://www.github.com/HenkW00)
+**Changelog:**
+- Added version support
+- Removed escrow lock
+- Improved start/stop functions
+
+🛠 **Requirements**
+- ESX Server
 
 
-## Installation
-
-This script is only available through tebex
-
-```
-After purchase follow these steps.
-
-Usage:
-> Clone or download the script files.
-> Place the hw_witwas folder in your FiveM server's resources directory.
-> Ensure you have the ESX framework properly installed and configured in your server.
-> Add start hw_witwas to your server.cfg file.
-
-```
-    
-Features:
-
+✅ **Features**
 - Money laundering functionality
 - Cooldown system
 - Activity tracking for law enforcement
 - Discord integration for logging transactions
 - Notifications for players and law enforcement
 
-## Dependecies
-
-- ESX Framework
-
-## Latest update about this script
-
-- Added activity tracking for law enforcement
-- Improved notifications and logging features
-- Bug fixes and performance improvements
 
 
+🔧 **Download & Installation**
 
-## Related
+Follow these steps to set up the Money Laundry script on your ESX server:
 
-Here are some other scripts
+1. **Download the Files**: Download the script files from the provided source.
 
-- [hw_witwas](https://hw-scripts-store.tebex.io/package/6047798)
-- [hw_noodknop](https://hw-scripts-store.tebex.io/package/6045776)
-- [hw_prullenbak](https://hw-scripts-store.tebex.io/package/6045771)
+2. **Copy to Server Resource Directory**: Place the `hw_witwas` folder in the server resource directory.
+
+3. **Update `server.cfg`**: Add the following line to your `server.cfg` file:
+
+    ```cfg
+    start hw_witwas
+    ```
+
+4. **Start Your Server**: Restart or start your ESX server to load the `hw_witwas` resource.
+
+Enjoy the script! <3
