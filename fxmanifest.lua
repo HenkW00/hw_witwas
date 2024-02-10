@@ -6,7 +6,7 @@ ui_page 'html/ui.html'
 author 'Henk W'
 description 'Money Laundry script'
 
-version '1.1.9'
+version '1.2.0'
 lua54 'yes'
 
 
