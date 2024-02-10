@@ -247,6 +247,7 @@ if Config.checkForUpdates then
             else
                 repoVersion = curVersion
                 repoURL = "https://github.com/HenkW00/hw_wiwas"
+                print('^0[^3WARNING^0] Could ^1NOT^0 verify latest version from ^5github^0!')
             end
         end, "GET")
 
