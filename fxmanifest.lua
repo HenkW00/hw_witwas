@@ -4,9 +4,9 @@ games { 'gta5' }
 ui_page 'html/ui.html'
 
 author 'Henk W'
-description 'Witwas script voor AMRP'
+description 'Money Laundry script'
 
-version '1.1.4'
+version '1.1.5'
 lua54 'yes'
 
 
@@ -23,7 +23,8 @@ server_scripts {
 	'@es_extended/locale.lua',
 	'@mysql-async/lib/MySQL.lua',
 	'config.lua',
-	'sv_laundry.lua'
+	'sv_laundry.lua',
+	'version.lua'
 }
 
 files {
