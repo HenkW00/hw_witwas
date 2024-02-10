@@ -6,7 +6,7 @@ ui_page 'html/ui.html'
 author 'Henk W'
 description 'Money Laundry script'
 
-version '1.1.5'
+version '1.1.6'
 lua54 'yes'
 
 
@@ -31,11 +31,6 @@ files {
 	'html/style.css',
 	'html/app.js',
 	'html/ui.html',
-}
-
-escrow_ignore {
-	'config.lua',
-	'fxmanifest.lua'
 }
 
 shared_script '@es_extended/imports.lua'
