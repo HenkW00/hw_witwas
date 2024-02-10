@@ -2,6 +2,7 @@ Config 					= {}
 
 Config.Locale 			= 'en'
 
+Config.checkForUpdates = true
 
 Config.DrawDistance 	= 10
 
