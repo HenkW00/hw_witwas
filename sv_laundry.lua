@@ -236,27 +236,24 @@ if Config.checkForUpdates then
 
     GetRepoInformations = function()
         local repoVersion, repoURL, repoBody = nil, nil, nil
-    
+
         PerformHttpRequest("https://api.github.com/repos/HenkW00/hw_witwas/releases/latest", function(err, response, headers)
             if err == 200 then
                 local data = json.decode(response)
-    
+
                 repoVersion = data.tag_name
                 repoURL = data.html_url
                 repoBody = data.body
-            else if err == 0 then
+            else
                 repoVersion = curVersion
-                repoURL = "https://github.com/HenkW00/hw_witwas"
-                repoBody = "Unable to check for updates due to an error. Please check manually."
-                print("^0[^1ERROR^0] Unable to check for updates to " .. GetCurrentResourceName() .. ". This may be due to API rate limits or other issues. Please check manually at " .. repoURL)
+                repoURL = "https://github.com/HenkW00/hw_wiwas"
             end
-          end
         end, "GET")
-    
+
         repeat
             Wait(50)
         until (repoVersion and repoURL and repoBody)
-    
+
         return repoVersion, repoURL, repoBody
     end
 end
