@@ -23,8 +23,7 @@ server_scripts {
 	'@es_extended/locale.lua',
 	'@mysql-async/lib/MySQL.lua',
 	'config.lua',
-	'sv_laundry.lua',
-	'version.lua'
+	'sv_laundry.lua'
 }
 
 files {
