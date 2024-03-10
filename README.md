@@ -8,9 +8,8 @@ The HW Witwas Script provides a money laundering functionality in your FiveM ser
 - HW Development | HenkW
 
 **Changelog:**
-- Added version support
-- Removed escrow lock
-- Improved start/stop functions
+- Added debug statements in client and server side
+- Addid Config.Debug to config.lua
 
 🛠 **Requirements**
 - ESX Server

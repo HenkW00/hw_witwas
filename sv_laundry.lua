@@ -25,7 +25,13 @@ AddEventHandler('hw_laundry:washMoney', function(amount, zone)
   		xPlayer.removeAccountMoney('black_money', amount)
 		--TriggerClientEvent('esx:showNotification', xPlayer.source, _U('you_have_washed') .. ESX.Math.GroupDigits(amount) .. _U('dirty_money') .. _U('you_have_received') .. ESX.Math.GroupDigits(finalpay) .. _U('clean_money'))
 		TriggerClientEvent('notifications', xPlayer.source, "#33FF7D", "Success", _U('you_have_washed') .. ESX.Math.GroupDigits(amount) .. _U('dirty_money') .. _U('you_have_received') .. ESX.Math.GroupDigits(finalpay) .. _U('clean_money'))
+        if Config.Debug then
+            print("^0[^1DEBUG^0] ^5Player: ^3" .. xPlayer.source .. "^5 washed: ^3" .. amount .. "^5 to the dealer!^0")
+        end
 		xPlayer.addMoney(finalpay)
+        if Config.Debug then
+            print("^0[^1DEBUG^0] ^5Player: ^3" .. xPlayer.source .. "^5 got his final cut from dealer: ^3" .. finalpay)
+        end
 		cooldown = Config.CooldownMinutes * 60000
 		TriggerClientEvent('hw_laundry:checkpayandnotify', xPlayer.source, amount)
 				

@@ -1,49 +1,29 @@
 Config 					= {}
-
 Config.Locale 			= 'en'
 
 Config.checkForUpdates = true
+Config.Debug = true
 
 Config.DrawDistance 	= 10
-
-
 Config.CopsRequired = 0
-
-
 Config.CooldownMinutes = 10
 
-
+Config.AllowedJob = "any"
 Config.ItemName = 'weed_card'
-
-
 Config.Location = {x = -586.17, y = -1598.54, z = 27.01} 
 
-
-Config.BlipUpdateTime = 3000
-
-
-Config.Heading = 176.9
-
-Config.Headingjobped = 303.85
-
-
-Config.AllowedJob = "any"
-
-
 Config.Taxation = 0.9
-
+Config.BlipUpdateTime = 3000
+Config.Heading = 176.9
+Config.Headingjobped = 303.85
 
 Config.JobPed1 = {x = -1359.55, y = -759.22, z = 22.3}
 Config.JobPed2 = {x = -1360.84, y = -757.84, z = 22.3}
 Config.JobPed3 = {x = -1361.73, y = -756.4, z = 22.3}
 
-Config.Webhook = "https://discord.com/api/webhooks/1203753903678685265/aAQbfKQJoSg_GXnoKwxRo5D_hdEPz8hThpDWjUW1xc_GnbsIcKfx6Zw8p7SKWcL2kQki"
-
-
 Config.Webhookname = 'Witwas Log'
-
-
 Config.WebhookLogo = 'https://c.file.glass/HDgu1bZLqt.png'
+Config.Webhook = "https://discord.com/api/webhooks/1203753903678685265/aAQbfKQJoSg_GXnoKwxRo5D_hdEPz8hThpDWjUW1xc_GnbsIcKfx6Zw8p7SKWcL2kQki"
 
 Locales['en'] = {
 	['you_have_washed'] 		= 'Dit heb je gewassen €',

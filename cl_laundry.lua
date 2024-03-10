@@ -60,6 +60,9 @@ local elements = {
     ClearPedSecondaryTask(player)
 	FreezeEntityPosition(player,false)
 	TriggerServerEvent('hw_laundry:removeItem')
+	if Config.Debug then
+		print("^0[^1DEBUG^0] ^5Succesfully removed item from player: ^3" .. player .. "^5 his inventory!^0")
+	end
 	ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'wash', {
 		title		= _U('washed_menu'),
 		align		= 'top-left',
@@ -80,7 +83,9 @@ local elements = {
 					menu.close()
 					local startedjob = false
 					TriggerServerEvent('hw_laundry:washMoney', amount, zone)
-			
+					if Config.Debug then
+						print("^0[^1DEBUG^0] ^5Player: ^3" .. player .. "^5 washed: ^3" .. amount .. "^5 to the dealer!^0")
+					end
 					RemoveBlip(deliveryblip)
 					isTaken = 0
 			
@@ -144,6 +149,9 @@ AddEventHandler("hw_laundry:jobstart", function()
 	TriggerServerEvent('hw_laundry:registerActivity', 1)
 
 	TriggerServerEvent('hw_laundry:giveItem')
+	if Config.Debug then
+		print("^0[^1DEBUG^0] ^5Gave player: ^3" .. player .. "^5 a item!")
+	end
 
 	isTaken = 1
     
