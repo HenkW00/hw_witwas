@@ -19,30 +19,16 @@ local CurrentActionData	= {}
 local startedjob = false
 local isTaken = 0
 
--- Citizen.CreateThread(function()
---     while ESX == nil do
---         TriggerEvent('esx:getSharedObject', function(obj) 
---             ESX = obj 
---         end)
-
---         Citizen.Wait(0)
---     end
--- end)
-
-
 RegisterNetEvent('esx:playerLoaded') 
 AddEventHandler('esx:playerLoaded', function(xPlayer, isNew)
 	ESX.PlayerData = xPlayer
 	ESX.PlayerLoaded = true
-	
 end)
 
 RegisterNetEvent('esx:setJob')
 AddEventHandler('esx:setJob', function(job)
 	ESX.PlayerData.job = job
 end)
-
-
 
 function MoneyWashMenu()
 local player = PlayerPedId()
@@ -82,6 +68,7 @@ local elements = {
 				else
 					menu.close()
 					local startedjob = false
+					Citizen.Wait(100)
 					TriggerServerEvent('hw_laundry:washMoney', amount, zone)
 					if Config.Debug then
 						print("^0[^1DEBUG^0] ^5Player: ^3" .. player .. "^5 washed: ^3" .. amount .. "^5 to the dealer!^0")
@@ -107,6 +94,7 @@ local elements = {
 end
 RegisterNetEvent('hw_laundry:checkpayandnotify')
 AddEventHandler('hw_laundry:checkpayandnotify', function(amount)
+	Citizen.Wait(100)
 	TriggerServerEvent('hw_laundry:sendToDiscord', amount)
 end)
 
@@ -116,6 +104,8 @@ AddEventHandler("hw_laundry:jobstart", function()
 	local player = PlayerPedId()
     local anim_lib = "missheistdockssetup1ig_5@base"
     local anim_dict = "workers_talking_base_dockworker1"
+
+	Citizen.Wait(100)
 	
 	loadModel("a_m_m_business_01")
     MoneyWashped2 = CreatePed(4, GetHashKey("a_m_m_business_01"), Config.JobPed1.x, Config.JobPed1.y-0.5, Config.JobPed1.z - 0.95, Config.Headingjobped, false, true)
@@ -146,6 +136,7 @@ AddEventHandler("hw_laundry:jobstart", function()
 	EndTextCommandSetBlipName(deliveryblip)
 	SetBlipRoute(deliveryblip, true)
 
+	Citizen.Wait(100)
 	TriggerServerEvent('hw_laundry:registerActivity', 1)
 
 	TriggerServerEvent('hw_laundry:giveItem')
@@ -171,8 +162,10 @@ Citizen.CreateThread(function()
 	  Citizen.Wait(Config.BlipUpdateTime)
 	  if isTaken == 1 and IsPedInAnyVehicle(GetPlayerPed(-1)) then
 			  local coords = GetEntityCoords(GetPlayerPed(-1))
+			  Citizen.Wait(100)
 			TriggerServerEvent('hw_laundry:alertcops', coords.x, coords.y, coords.z)
 		  elseif isTaken == 1 and not IsPedInAnyVehicle(GetPlayerPed(-1)) then
+			  Citizen.Wait(100)
 			  TriggerServerEvent('hw_laundry:stopalertcops')
 	  end
 	end
@@ -195,7 +188,6 @@ end)
 AddEventHandler('hw_laundry:hasExitedMarker', function(zone)
 	CurrentAction = nil
 	ESX.UI.Menu.CloseAll()	
---	ESX.UI.Dialog.CloseAll()		
 end)
 
 
@@ -207,12 +199,10 @@ Citizen.CreateThread(function()
 		local isAuthorized 	= Authorized()
 		
 		if isAuthorized and (GetDistanceBetweenCoords(coords, Config.Location.x, Config.Location.y, Config.Location.z, true) < Config.DrawDistance) then
+			Citizen.Wait(100)
 			DrawMarker(20, Config.Location.x, Config.Location.y,Config.Location.z, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.3, 0.3, 0.3, 250, 0, 0, 100, false, true, 2, false, false, false, false)
 		    DrawText3Ds(Config.Location.x, Config.Location.y, Config.Location.z+0.3, tostring("Black Money Wash"))
-			
 		end
-				
-			
 	end
 end)
 
@@ -222,7 +212,6 @@ Citizen.CreateThread(function()
     FreezeEntityPosition(MoneyWashped, true)
     SetEntityInvincible(MoneyWashped, true)
     SetBlockingOfNonTemporaryEvents(MoneyWashped, true)
-    
 end)
 
 
@@ -250,8 +239,6 @@ DrawText3Ds = function(x, y, z, text)
     DrawText(0.0, 0.0)
     ClearDrawOrigin()
 end
-	
-	
 
 Citizen.CreateThread(function()
 	while true do
@@ -289,7 +276,6 @@ Citizen.CreateThread(function()
 			hasAlreadyEnteredMarker = false
 			TriggerEvent('hw_laundry:hasExitedMarker', LastZone)
 		end
-		
 	end
 end)
 	
@@ -300,18 +286,15 @@ local job = Config.AllowedJob
 	if ESX.PlayerData.job == nil then
 		return false
 	end
-			
 	if job == 'any' or job == ESX.PlayerData.job.name then
 		return true
 	end
-		
 	return false
-	
 end
 
 Citizen.CreateThread(function()
 	while true do
-		Citizen.Wait(0)
+		Citizen.Wait(100)
 		
 		if CurrentAction ~= nil then
 			ESX.ShowHelpNotification(CurrentActionMsg)
@@ -367,20 +350,6 @@ AddEventHandler('hw_laundry:setcopblip', function(cx,cy,cz)
 		PulseBlip(copblip)
 end)
 
-
--- Citizen.CreateThread(function()
---     info = Config.Location
---     info.blip = AddBlipForCoord(info.x, info.y, info.z)
---     SetBlipSprite(info.blip, 463)
---     SetBlipDisplay(info.blip, 4)
---     SetBlipScale(info.blip, 1.0)
---     SetBlipColour(info.blip, 1)
---     SetBlipAsShortRange(info.blip, true)
---     BeginTextCommandSetBlipName("STRING")
--- 	AddTextComponentString("Money Laundering")
---     EndTextCommandSetBlipName(info.blip)
--- end)
-
 AddEventHandler('esx:onPlayerDeath', function(data)
     TriggerEvent("hw_laundry:abortmission")
 end)
@@ -390,6 +359,7 @@ AddEventHandler('hw_laundry:abortmission', function()
 	isTaken = 0
 	startedjob = false
 	TriggerServerEvent('hw_laundry:registerActivity', 0)
+	Citizen.Wait(100)
 	DeletePed(MoneyWashped2)
 	DeletePed(MoneyWashped3)
 	DeletePed(MoneyWashped4)

@@ -6,7 +6,7 @@ ui_page 'html/ui.html'
 author 'Henk W'
 description 'Money Laundry script'
 
-version '1.2.6'
+version '1.2.7'
 lua54 'yes'
 
 
@@ -33,3 +33,4 @@ files {
 }
 
 shared_script '@es_extended/imports.lua'
+server_scripts { '@mysql-async/lib/MySQL.lua' }
